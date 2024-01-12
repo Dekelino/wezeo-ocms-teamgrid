@@ -1,0 +1,31 @@
+# ===================================
+#  Form Behavior Config
+# ===================================
+
+# Record name
+name: Projects-Controller
+
+# Model Form Field configuration
+form: $/app/projects/models/projects-controller/fields.yaml
+
+# Model Class name
+modelClass: App\Projects\Models\ProjectsController
+
+# Default redirect location
+defaultRedirect: app/projects/projects-controller
+
+# Create page
+create:
+    title: backend::lang.form.create_title
+    redirect: app/projects/projects-controller/update/:id
+    redirectClose: app/projects/projects-controller
+
+# Update page
+update:
+    title: backend::lang.form.update_title
+    redirect: app/projects/projects-controller
+    redirectClose: app/projects/projects-controller
+
+# Preview page
+preview:
+    title: backend::lang.form.preview_title
