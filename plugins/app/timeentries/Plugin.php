@@ -2,9 +2,11 @@
 
 use Backend;
 use System\Classes\PluginBase;
+use App\Extend\ExtendedUser;
+
 
 /**
- * time-entries Plugin Information File
+ * timeEntries Plugin Information File
  */
 class Plugin extends PluginBase
 {
@@ -16,7 +18,7 @@ class Plugin extends PluginBase
     public function pluginDetails()
     {
         return [
-            'name'        => 'time-entries',
+            'name'        => 'timeEntries',
             'description' => 'No description provided yet...',
             'author'      => 'App',
             'icon'        => 'icon-leaf'
@@ -40,7 +42,9 @@ class Plugin extends PluginBase
      */
     public function boot()
     {
-
+        ExtendedUser::extend(function ($model) {
+            $model->implement[] = 'RainLab.User.Behaviors.UserPreferencesModel';
+        });
     }
 
     /**
@@ -67,8 +71,8 @@ class Plugin extends PluginBase
         return []; // Remove this line to activate
 
         return [
-            'app.time-entries.some_permission' => [
-                'tab' => 'time-entries',
+            'app.timeentries.some_permission' => [
+                'tab' => 'timeEntries',
                 'label' => 'Some permission'
             ],
         ];
@@ -84,11 +88,11 @@ class Plugin extends PluginBase
         return []; // Remove this line to activate
 
         return [
-            'time-entries' => [
-                'label'       => 'time-entries',
-                'url'         => Backend::url('app/time-entries/mycontroller'),
+            'timeentries' => [
+                'label'       => 'timeEntries',
+                'url'         => Backend::url('app/timeentries/mycontroller'),
                 'icon'        => 'icon-leaf',
-                'permissions' => ['app.time-entries.*'],
+                'permissions' => ['app.timeentries.*'],
                 'order'       => 500,
             ],
         ];

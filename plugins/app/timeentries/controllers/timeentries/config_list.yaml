@@ -3,16 +3,16 @@
 # ===================================
 
 # Model List Column configuration
-list: $/app/time-entries/models/time-entries-controller/columns.yaml
+list: $/app/timeentries/models/timeentry/columns.yaml
 
 # Model Class name
-modelClass: App\TimeEntries\Models\TimeEntriesController
+modelClass: App\Timeentries\Models\TimeEntry
 
 # List Title
-title: Manage Time-Entries-Controllers
+title: Manage Time Entries
 
 # Link URL for each record
-recordUrl: app/time-entries/time-entries-controller/update/:id
+recordUrl: app/timeentries/timeentries/update/:id
 
 # Message to display if the list is empty
 noRecordsMessage: backend::lang.list.no_records

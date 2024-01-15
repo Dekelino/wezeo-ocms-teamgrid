@@ -1,0 +1,31 @@
+# ===================================
+#  Form Behavior Config
+# ===================================
+
+# Record name
+name: Time Entry
+
+# Model Form Field configuration
+form: $/app/timeentries/models/timeentry/fields.yaml
+
+# Model Class name
+modelClass: App\Timeentries\Models\TimeEntry
+
+# Default redirect location
+defaultRedirect: app/timeentries/timeentries
+
+# Create page
+create:
+    title: backend::lang.form.create_title
+    redirect: app/timeentries/timeentries/update/:id
+    redirectClose: app/timeentries/timeentries
+
+# Update page
+update:
+    title: backend::lang.form.update_title
+    redirect: app/timeentries/timeentries
+    redirectClose: app/timeentries/timeentries
+
+# Preview page
+preview:
+    title: backend::lang.form.preview_title

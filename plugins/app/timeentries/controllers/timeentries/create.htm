@@ -1,6 +1,6 @@
 <?php Block::put('breadcrumb') ?>
     <ul>
-        <li><a href="<?= Backend::url('app/time-entries/time-entries-controller') ?>">Time-Entries-Controller</a></li>
+        <li><a href="<?= Backend::url('app/timeentries/timeentries') ?>">Time Entries</a></li>
         <li><?= e($this->pageTitle) ?></li>
     </ul>
 <?php Block::endPut() ?>
@@ -18,30 +18,22 @@
                 <button
                     type="submit"
                     data-request="onSave"
-                    data-request-data="redirect:0"
                     data-hotkey="ctrl+s, cmd+s"
-                    data-load-indicator="Saving time-entries-controller..."
+                    data-load-indicator="Creating timeEntry..."
                     class="btn btn-primary">
-                    <u>S</u>ave
+                    Create
                 </button>
                 <button
                     type="button"
                     data-request="onSave"
                     data-request-data="close:1"
                     data-hotkey="ctrl+enter, cmd+enter"
-                    data-load-indicator="Saving time-entries-controller..."
+                    data-load-indicator="Creating timeEntry..."
                     class="btn btn-default">
-                    Save and Close
-                </button>
-                <button
-                    type="button"
-                    class="oc-icon-trash-o btn-icon danger pull-right"
-                    data-request="onDelete"
-                    data-load-indicator="Deleting time-entries-controller..."
-                    data-request-confirm="Delete this time-entries-controller?">
+                    Create and Close
                 </button>
                 <span class="btn-text">
-                    or <a href="<?= Backend::url('app/time-entries/time-entries-controller') ?>">Cancel</a>
+                    or <a href="<?= Backend::url('app/timeentries/timeentries') ?>">Cancel</a>
                 </span>
             </div>
         </div>
@@ -51,6 +43,6 @@
 <?php else: ?>
 
     <p class="flash-message static error"><?= e($this->fatalError) ?></p>
-    <p><a href="<?= Backend::url('app/time-entries/time-entries-controller') ?>" class="btn btn-default">Return to time-entries-controller list</a></p>
+    <p><a href="<?= Backend::url('app/timeentries/timeentries') ?>" class="btn btn-default">Return to time entries list</a></p>
 
 <?php endif ?>

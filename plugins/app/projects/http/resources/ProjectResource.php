@@ -13,7 +13,7 @@ class ProjectResource extends JsonResource {
             'title' => $this->title,
             'description' => $this->description,
             'customer' => $this->customer,
-            'project_manager' => $this->project_manager,
+            'coworkers' => $this->coworkers,
             'list' => $this->list,
             'created_by' => $this->created_by
         ];

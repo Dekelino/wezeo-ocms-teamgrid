@@ -4,7 +4,6 @@ namespace App\Projects\Http\Controllers;
 
 use Backend\Classes\Controller;
 use App\Projects\Http\Resources\ProjectResource;
-use App\Projects\Models\Projects;
 use Illuminate\Http\Request;
 use App\Projects\Models\Project;
 
@@ -26,9 +25,8 @@ class ProjectController extends Controller
         $project->title = $request->title;
         $project->description = $request->description;
         $project->customer = $request->customer;
-        $project->project_manager = $request->project_manager;
         $project->list = $request->list;
-        $project->created_by = $user->name . ' ' . $user->surname;
+        $project->created_by = $user->id;
         $project->save();
         return ProjectResource::make($project);
     }
@@ -52,7 +50,27 @@ class ProjectController extends Controller
         $project->is_done = $project->is_done ? false : true;
 
         $project->save();
-        return $project->is_done ? "Project {$project->title} is closed" : "Project {$project->title} is still opened";
-
+        return new ProjectResource($project);
     }
+
+    public function addCoworker($project_id)
+    {
+        $user = auth()->user();
+        $coworkerName = $user->id;
+        $project = Project::findOrFail($project_id);
+    
+        $coworkers = $project->coworkers;
+    
+        if (!in_array($coworkerName, $coworkers)) {
+            $coworkers[] = $coworkerName;
+            $project->setAttribute('coworkers', $coworkers);
+            $project->save();
+        }
+    
+        return new ProjectResource($project);
+    }
+    
+
+    
+
 }

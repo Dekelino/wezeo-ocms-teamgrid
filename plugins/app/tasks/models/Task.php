@@ -1,18 +1,23 @@
-<?php namespace App\TimeEntries\Models;
+<?php namespace App\Tasks\Models;
 
 use Model;
+use App\Extend\ExtendedUser;
+use App\Projects\Models\Project;
 
-/**
- * time-entries Model
+
+/**;
+ * task Model
  */
-class TimeEntries extends Model
+class Task extends Model
 {
     use \October\Rain\Database\Traits\Validation;
 
     /**
      * @var string The database table used by the model.
      */
-    public $table = 'app_time-entries_time-entries';
+    public $table = 'app_tasks';
+
+    protected $primaryKey = 'task_id'; //defined custom primary key
 
     /**
      * @var array Guarded fields
@@ -64,7 +69,10 @@ class TimeEntries extends Model
     public $hasMany = [];
     public $hasOneThrough = [];
     public $hasManyThrough = [];
-    public $belongsTo = [];
+    public $belongsTo = [
+        'user' => [ExtendedUser::class, 'key' => 'user_id'],
+        'project' => [Project::class,'key' => 'project_id']
+    ];
     public $belongsToMany = [];
     public $morphTo = [];
     public $morphOne = [];

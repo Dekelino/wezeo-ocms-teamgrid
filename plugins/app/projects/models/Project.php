@@ -4,6 +4,7 @@ namespace App\Projects\Models;
 
 use Model;
 use App\Extend\ExtendedUser;
+use App\Tasks\Models\Task;
 
 /**
  * projects Model
@@ -27,7 +28,7 @@ class Project extends Model
     /**
      * @var array Fillable fields
      */
-    protected $fillable = ['project_id','title','description','customer','project_manager','list','created_by'];
+    protected $fillable = [];
 
     /**
      * @var array Validation rules for attributes
@@ -37,7 +38,9 @@ class Project extends Model
     /**
      * @var array Attributes to be cast to native types
      */
-    protected $casts = [];
+    protected $casts = [
+        'coworkers' => 'array',
+    ];
 
     /**
      * @var array Attributes to be cast to JSON
@@ -66,7 +69,9 @@ class Project extends Model
      * @var array Relations
      */
     public $hasOne = [];
-    public $hasMany = [];
+    public $hasMany = [
+        'tasks' => [Task::class, 'key' => 'project_id']
+    ];
     public $hasOneThrough = [];
     public $hasManyThrough = [];
     public $belongsTo = [

@@ -9,13 +9,18 @@ class TaskResource extends JsonResource {
     public function toArray($request)
     {
         return [
-            'project_id' => $this->project_id,
-            'title' => $this->title,
+            'task_id' => $this->task_id,
+            'task_name' => $this->task_name,
             'description' => $this->description,
-            'customer' => $this->customer,
-            'project_manager' => $this->project_manager,
-            'list' => $this->list,
-            'created_by' => $this->created_by
+            'project_id' => $this->project_id,
+            'subscribers_user_id' => $this->subscribers_user_id,
+            'is_completed' => $this->is_completed,
+            'created_by' => $this->created_by,
+            'planned_start' => $this->planned_start,
+            'planned_end' => $this->planned_end,
+            'planned_time' => $this->planned_time,
+            'created_at	' => $this->created_at,
+            'updated_at	' => $this->updated_at
         ];
     }
 }

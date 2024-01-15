@@ -17,9 +17,9 @@ class CreateProjectsTable extends Migration
             $table->text('description')->nullable();
             $table->boolean('is_done')->default(false);
             $table->text('customer')->nullable();
-            $table->text('project_manager')->nullable();
+            $table->json('coworkers')->nullable();
             $table->text('list')->nullable();
-            $table->text('created_by')->nullable();
+            $table->bigInteger('created_by')->nullable();
             $table->timestamps();
         });
     }

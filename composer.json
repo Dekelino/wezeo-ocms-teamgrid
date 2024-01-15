@@ -69,7 +69,8 @@
     "config": {
         "preferred-install": "dist",
         "allow-plugins": {
-            "composer/installers": true
+            "composer/installers": true,
+            "kylekatarnls/update-helper": true
         }
     },
     "minimum-stability": "dev",

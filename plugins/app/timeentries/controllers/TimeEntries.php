@@ -1,12 +1,12 @@
-<?php namespace App\TimeEntries\Controllers;
+<?php namespace App\Timeentries\Controllers;
 
 use BackendMenu;
 use Backend\Classes\Controller;
 
 /**
- * Time-Entries-Controller Back-end Controller
+ * Time Entries Back-end Controller
  */
-class TimeEntriesController extends Controller
+class TimeEntries extends Controller
 {
     /**
      * @var array Behaviors that are implemented by this controller.
@@ -30,6 +30,6 @@ class TimeEntriesController extends Controller
     {
         parent::__construct();
 
-        BackendMenu::setContext('App.TimeEntries', 'time-entries', 'time-entries-controller');
+        BackendMenu::setContext('App.Timeentries', 'timeentries', 'timeentries');
     }
 }
