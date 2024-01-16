@@ -3,6 +3,8 @@
 namespace App\Projects\Models;
 
 use Model;
+use App\Tasks\Models\Task;
+use RainLab\User\Models\User;
 
 class Project extends Model
 {
@@ -22,6 +24,11 @@ class Project extends Model
     ];
 
     public $belongsTo = [
-        'user' => ['RainLab\User\Models\User']
+        'user' => [User::class],
     ];
+
+    public $hasMany = [
+        'tasks' => [Task::class, 'key' => 'project_id', 'otherKey' => 'project_id']
+    ];
+    
 }

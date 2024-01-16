@@ -1,6 +1,10 @@
-<?php namespace App\Timeentries\Models;
+<?php
+
+namespace App\Timeentries\Models;
 
 use Model;
+use RainLab\User\Models\User;
+use App\Tasks\Models\Task;
 
 /**
  * timeEntry Model
@@ -23,6 +27,6 @@ class TimeEntry extends Model
     ];
 
     public $belongsTo = [
-        'task' => ['App\Tasks\Models\Task']
+        'task' => [Task::class, 'user' => User::class]
     ];
 }

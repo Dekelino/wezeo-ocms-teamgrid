@@ -42,8 +42,7 @@ class Plugin extends PluginBase
      */
     public function boot()
     {
-        ExtendedUser::extendUser();
-        ExtendedProject::extendProject();
+       ExtendedUser::extendUser();
     }
 
     /**

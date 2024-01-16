@@ -1,7 +1,9 @@
 <?php namespace App\Tasks\Models;
 
 use Model;
-
+use App\Projects\Models\Project;
+use App\TimeEntries\Models\TimeEntry;
+use RainLab\User\Models\User;
 
 class Task extends Model
 {
@@ -21,7 +23,11 @@ class Task extends Model
     ];
 
     public $belongsTo = [
-        'user' => ['RainLab\User\Models\User'],
-        'project' => ['App\Projects\Models\Project', 'project_id']
+        'user' => [User::class],
+        'project' => [Project::class,'key' => 'project_id','otherKey' => 'project_id' ]
+    ];
+
+    public $hasMany = [
+        'timeEntries' => Timeentry::class
     ];
 }
