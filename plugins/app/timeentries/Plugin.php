@@ -2,7 +2,6 @@
 
 use Backend;
 use System\Classes\PluginBase;
-use App\Extend\ExtendedUser;
 
 
 /**
@@ -42,9 +41,6 @@ class Plugin extends PluginBase
      */
     public function boot()
     {
-        ExtendedUser::extend(function ($model) {
-            $model->implement[] = 'RainLab.User.Behaviors.UserPreferencesModel';
-        });
     }
 
     /**

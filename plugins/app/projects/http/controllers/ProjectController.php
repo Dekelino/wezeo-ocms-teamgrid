@@ -28,7 +28,7 @@ class ProjectController extends Controller
         $project->list = $request->list;
         $project->created_by = $user->id;
         $project->save();
-        return ProjectResource::make($project);
+        return new ProjectResource($project);
     }
 
     public function editProject(Request $request, $project_id)
@@ -38,9 +38,10 @@ class ProjectController extends Controller
         $project->title = $request->input('title');
         $project->description = $request->input('description');
         $project->customer = $request->input('customer');
-        $project->project_manager = $request->input('project_manager');
         $project->list = $request->input('list');
         $project->save();
+        return new ProjectResource($project);
+        
     }
 
     public function toggleIsDoneProject($project_id)
@@ -53,24 +54,5 @@ class ProjectController extends Controller
         return new ProjectResource($project);
     }
 
-    public function addCoworker($project_id)
-    {
-        $user = auth()->user();
-        $coworkerName = $user->id;
-        $project = Project::findOrFail($project_id);
-    
-        $coworkers = $project->coworkers;
-    
-        if (!in_array($coworkerName, $coworkers)) {
-            $coworkers[] = $coworkerName;
-            $project->setAttribute('coworkers', $coworkers);
-            $project->save();
-        }
-    
-        return new ProjectResource($project);
-    }
-    
-
-    
 
 }

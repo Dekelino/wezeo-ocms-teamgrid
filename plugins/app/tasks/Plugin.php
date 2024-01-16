@@ -1,8 +1,9 @@
 <?php namespace App\Tasks;
 
+use App\Projects\Extend\ExtendedUser;
+use App\Tasks\Extend\ExtendedProject;
 use Backend;
 use System\Classes\PluginBase;
-use App\Extend\ExtendedUser;
 
 /**
  * tasks Plugin Information File
@@ -41,9 +42,8 @@ class Plugin extends PluginBase
      */
     public function boot()
     {
-        ExtendedUser::extend(function ($model) {
-            $model->implement[] = 'RainLab.User.Behaviors.UserPreferencesModel';
-        });
+        ExtendedUser::extendUser();
+        ExtendedProject::extendProject();
     }
 
     /**

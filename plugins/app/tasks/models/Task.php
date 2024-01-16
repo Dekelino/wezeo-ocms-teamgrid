@@ -1,82 +1,27 @@
 <?php namespace App\Tasks\Models;
 
 use Model;
-use App\Extend\ExtendedUser;
-use App\Projects\Models\Project;
 
 
-/**;
- * task Model
- */
 class Task extends Model
 {
     use \October\Rain\Database\Traits\Validation;
 
-    /**
-     * @var string The database table used by the model.
-     */
     public $table = 'app_tasks';
 
     protected $primaryKey = 'task_id'; //defined custom primary key
 
-    /**
-     * @var array Guarded fields
-     */
     protected $guarded = ['*'];
 
-    /**
-     * @var array Fillable fields
-     */
-    protected $fillable = [];
-
-    /**
-     * @var array Validation rules for attributes
-     */
     public $rules = [];
 
-    /**
-     * @var array Attributes to be cast to native types
-     */
-    protected $casts = [];
-
-    /**
-     * @var array Attributes to be cast to JSON
-     */
-    protected $jsonable = [];
-
-    /**
-     * @var array Attributes to be appended to the API representation of the model (ex. toArray())
-     */
-    protected $appends = [];
-
-    /**
-     * @var array Attributes to be removed from the API representation of the model (ex. toArray())
-     */
-    protected $hidden = [];
-
-    /**
-     * @var array Attributes to be cast to Argon (Carbon) instances
-     */
     protected $dates = [
         'created_at',
         'updated_at'
     ];
 
-    /**
-     * @var array Relations
-     */
-    public $hasOne = [];
-    public $hasMany = [];
-    public $hasOneThrough = [];
-    public $hasManyThrough = [];
     public $belongsTo = [
-        'user' => [ExtendedUser::class, 'key' => 'user_id'],
-        'project' => [Project::class,'key' => 'project_id']
+        'user' => ['RainLab\User\Models\User'],
+        'project' => ['App\Projects\Models\Project', 'project_id']
     ];
-    public $belongsToMany = [];
-    public $morphTo = [];
-    public $morphOne = [];
-    public $morphMany = [];
-    public $attachOne = [];
-    public $attachMany = [];
 }
