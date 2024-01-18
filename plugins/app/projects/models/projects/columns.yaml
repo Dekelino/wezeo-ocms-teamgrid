@@ -5,4 +5,39 @@
 columns:
     id:
         label: ID
+        type: number
+        searchable: true
+
+    title:
+        label: Title
+        type: text
+        searchable: true
+
+    description:
+        label: Description
+        type: text
+        searchable: true
+
+    is_done:
+        label: Is Done
+        type: switch
+
+    customer:
+        label: Customer
+        type: text
+        searchable: true
+
+    coworkers:
+        label: Coworkers
+        type: text
+        searchable: true
+
+    list:
+        label: List
+        type: text
+        searchable: true
+
+    user_id:
+        label: User ID
+        type: number
         searchable: true

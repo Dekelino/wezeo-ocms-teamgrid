@@ -5,4 +5,45 @@
 fields:
     id:
         label: ID
-        disabled: true
+        span: auto
+        type: number
+        readOnly: true
+
+    title:
+        label: Title
+        span: auto
+        type: text
+        required: true
+
+    description:
+        label: Description
+        span: auto
+        type: textarea
+
+    is_done:
+        label: Is Done
+        span: auto
+        type: switch
+        default: false
+
+    customer:
+        label: Customer
+        span: auto
+        type: text
+
+    coworkers:
+        label: Coworkers
+        span: auto
+        type: text
+        mode: json
+        comment: 'Enter a JSON array of coworkers'
+
+    list:
+        label: List
+        span: auto
+        type: text
+
+    user_id:
+        label: User ID
+        span: auto
+        type: number

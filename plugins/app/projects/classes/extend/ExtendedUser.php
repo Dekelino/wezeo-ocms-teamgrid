@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Projects\Extend;
+namespace App\Projects\Classes\Extend;
 
 use RainLab\User\Models\User as RainLabUser;
 

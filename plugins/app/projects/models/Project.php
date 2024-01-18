@@ -12,8 +12,6 @@ class Project extends Model
 
     public $table = 'app_projects';
 
-    protected $primaryKey = 'project_id'; //defined custom primary key
-
     protected $guarded = ['*'];
     protected $fillable = [];
 
@@ -28,7 +26,7 @@ class Project extends Model
     ];
 
     public $hasMany = [
-        'tasks' => [Task::class, 'key' => 'project_id', 'otherKey' => 'project_id']
+        'tasks' => [Task::class]
     ];
     
 }

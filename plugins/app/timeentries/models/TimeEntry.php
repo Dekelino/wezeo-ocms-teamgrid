@@ -15,8 +15,6 @@ class TimeEntry extends Model
 
     public $table = 'app_timeentries';
 
-    protected $primaryKey = 'entry_id'; //defined custom primary key
-
     protected $guarded = ['*'];
 
     public $rules = [];

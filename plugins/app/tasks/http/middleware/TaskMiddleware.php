@@ -12,13 +12,13 @@ class TaskMiddleware
 {
     public function handle(Request $request, Closure $next): Response
     {
-        $taskId = $request->route('task_id');
+        $taskId = $request->route('key');
 
         $task = Task::findOrFail($taskId);
 
         $user = auth()->user();
 
-        if ($task->created_by !== $user->id) {
+        if ($task->user_id !== $user->id) {
             abort(403, 'This is not your task, please contact admin user to add you as subscriber');
         }
 

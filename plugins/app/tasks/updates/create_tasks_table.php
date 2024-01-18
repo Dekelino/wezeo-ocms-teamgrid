@@ -9,13 +9,13 @@ class CreateTasksTable extends Migration
     public function up()
     {
         Schema::create('app_tasks', function (Blueprint $table) {
-            $table->increments('task_id')->unsigned();
+            $table->increments('id');
             $table->string('task_name');
             $table->text('description')->nullable();
             $table->unsignedBigInteger('project_id');
             $table->unsignedBigInteger('subscribers_user_id')->nullable();
             $table->boolean('is_completed')->default(false);
-            $table->unsignedBigInteger('created_by');
+            $table->unsignedBigInteger('user_id');
             $table->timestamp('planned_start')->nullable();
             $table->timestamp('planned_end')->nullable();
             $table->integer('planned_time')->nullable();

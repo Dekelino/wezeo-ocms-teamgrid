@@ -11,7 +11,7 @@ class TimeEntryMiddleware
 {
     public function handle(Request $request, Closure $next): Response
     {
-        $timeEntryId = $request->route('entry_id');
+        $timeEntryId = $request->route('key');
 
         $timeEntryId = TimeEntry::findOrFail($timeEntryId);
 

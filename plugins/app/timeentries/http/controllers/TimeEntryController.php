@@ -12,7 +12,7 @@ use Carbon\Carbon;
 
 class TimeEntryController extends Controller 
 {
-    public function startTracking() 
+    public function store() 
     {
         $user = auth()->user();
         $timeentry = new TimeEntry();
@@ -22,9 +22,9 @@ class TimeEntryController extends Controller
         return TimeEntryResource::make($timeentry);
     }
 
-    public function endTracking($entry_id) 
+    public function complete($key) 
     {
-        $timeentry = TimeEntry::findOrFail($entry_id);
+        $timeentry = TimeEntry::findOrFail($key);
 
         $timeentry->end_time = Carbon::now('Europe/Bratislava');
 
@@ -32,9 +32,9 @@ class TimeEntryController extends Controller
         return TimeEntryResource::make($timeentry);
     }
 
-    public function editTracking(Request $request,$entry_id) 
+    public function update(Request $request,$key) 
     {
-        $timeentry = TimeEntry::findOrFail($entry_id);
+        $timeentry = TimeEntry::findOrFail($key);
 
         $timeentry->start_time = $request->input('start_time');
         $timeentry->end_time = $request->input('end_time');

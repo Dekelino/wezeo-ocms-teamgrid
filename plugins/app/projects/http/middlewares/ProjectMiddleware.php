@@ -11,13 +11,13 @@ class ProjectMiddleware
 {
     public function handle(Request $request, Closure $next): Response
     {
-        $projectId = $request->route('project_id');
+        $key = $request->route('key');
 
-        $project = Project::findOrFail($projectId);
+        $project = Project::findOrFail($key);
 
         $user = auth()->user();
 
-        if ($project->created_by !== $user->id) {
+        if ($project->user_id !== $user->id) {
             abort(403, 'This is not your project, please contact admin user to add you as subscriber');
         }
 

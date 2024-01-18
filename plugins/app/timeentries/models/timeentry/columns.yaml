@@ -5,4 +5,20 @@
 columns:
     id:
         label: ID
+        type: number
+        searchable: true
+
+    user_id:
+        label: User ID
+        type: number
+        searchable: true
+
+    start_time:
+        label: Start Time
+        type: datetime
+        searchable: true
+
+    end_time:
+        label: End Time
+        type: datetime
         searchable: true

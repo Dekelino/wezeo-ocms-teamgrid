@@ -5,4 +5,49 @@
 columns:
     id:
         label: ID
+        type: number
+        searchable: true
+
+    task_name:
+        label: Task Name
+        type: text
+        searchable: true
+
+    description:
+        label: Description
+        type: text
+        searchable: true
+
+    project_id:
+        label: Project ID
+        type: number
+        searchable: true
+
+    subscribers_user_id:
+        label: Subscribers User ID
+        type: number
+        searchable: true
+
+    is_completed:
+        label: Is Completed
+        type: switch
+
+    user_id:
+        label: User ID
+        type: number
+        searchable: true
+
+    planned_start:
+        label: Planned Start
+        type: datetime
+        searchable: true
+
+    planned_end:
+        label: Planned End
+        type: datetime
+        searchable: true
+
+    planned_time:
+        label: Planned Time
+        type: number
         searchable: true

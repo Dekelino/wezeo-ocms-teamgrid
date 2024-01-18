@@ -11,8 +11,6 @@ class Task extends Model
 
     public $table = 'app_tasks';
 
-    protected $primaryKey = 'task_id'; //defined custom primary key
-
     protected $guarded = ['*'];
 
     public $rules = [];
@@ -24,7 +22,7 @@ class Task extends Model
 
     public $belongsTo = [
         'user' => [User::class],
-        'project' => [Project::class,'key' => 'project_id','otherKey' => 'project_id' ]
+        'project' => [Project::class]
     ];
 
     public $hasMany = [

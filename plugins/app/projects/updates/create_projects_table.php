@@ -12,14 +12,14 @@ class CreateProjectsTable extends Migration
     {
         Schema::create('app_projects', function (Blueprint $table) {
             $table->engine = 'InnoDB';
-            $table->increments('project_id')->unsigned();
+            $table->increments('id');
             $table->text('title');
             $table->text('description')->nullable();
             $table->boolean('is_done')->default(false);
             $table->text('customer')->nullable();
             $table->json('coworkers')->nullable();
             $table->text('list')->nullable();
-            $table->bigInteger('created_by')->nullable();
+            $table->bigInteger('user_id')->nullable();
             $table->timestamps();
         });
     }

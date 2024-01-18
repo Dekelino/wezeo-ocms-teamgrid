@@ -5,4 +5,22 @@
 fields:
     id:
         label: ID
-        disabled: true
+        span: auto
+        type: number
+        readOnly: true
+
+    user_id:
+        label: User ID
+        span: auto
+        type: number
+        required: true
+
+    start_time:
+        label: Start Time
+        span: auto
+        type: datetime
+
+    end_time:
+        label: End Time
+        span: auto
+        type: datetime

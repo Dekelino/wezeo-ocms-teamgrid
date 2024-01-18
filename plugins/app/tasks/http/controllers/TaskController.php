@@ -12,23 +12,24 @@ use App\Projects\Models\Project;
 class TaskController extends Controller
 {
 
-    public function getAllTasks()
+    public function index()
     {
         $tasks = Task::all();
         
         return TaskResource::collection($tasks);
     }
 
-    public function addTask(Request $request)
+    public function store(Request $request,$key)
     {
         $user = auth()->user();
         $task = new Task();
+        $task->id= $request->id;
         $task->task_name = $request->task_name;
         $task->description = $request->description;
-        $task->project_id = $request->project_id;
+        $task->project_id = $key;
         $task->subscribers_user_id = $request->subscribers_user_id;
         $task->is_completed = $request->is_completed;
-        $task->created_by = $user->id;
+        $task->user_id = $user->id;
         $task->planned_start = $request->planned_start;
         $task->planned_end = $request->planned_end;
         $task->planned_time = $request->planned_time;
@@ -36,9 +37,9 @@ class TaskController extends Controller
         return TaskResource::make($task);
     }
 
-    public function editTask(Request $request, $task_id)
+    public function update(Request $request, $key)
     {
-        $task = Task::findOrFail($task_id); //findOrFail https://docs.octobercms.com/3.x/extend/database/model.html#not-found-exceptions
+        $task = Task::findOrFail($key); //findOrFail https://docs.octobercms.com/3.x/extend/database/model.html#not-found-exceptions
 
         $task->task_name = $request->input('task_name');
         $task->description = $request->input('description');
@@ -52,9 +53,9 @@ class TaskController extends Controller
         return "Task {$task->task_name} updated successfully";
     }
 
-    public function toggleIsDoneTask($task_id)
+    public function complete($key)
     {
-        $task = Task::findOrFail($task_id);
+        $task = Task::findOrFail($key);
 
         $task->is_completed = $task->is_completed ? false : true;
 
@@ -62,11 +63,10 @@ class TaskController extends Controller
         return $task->is_completed ? "Task {$task->title} is completed" : "Task {$task->title} is still opened";
 
     }
-    public function getTasksForProject($project_id)
+    public function indexProject($key)
     {
-        $project = Project::findOrFail($project_id);
+        $project = Project::findOrFail($key);
         $tasks = $project->tasks;
-
         return $tasks;
 
     }
