@@ -3,7 +3,7 @@
 namespace App\Projects\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
-
+use LibUser\Userapi\Http\Resources\UserResource;
 
 class ProjectResource extends JsonResource {
     public function toArray($request)
@@ -14,9 +14,9 @@ class ProjectResource extends JsonResource {
             'description' => $this->description,
             'is_done' => $this->is_done,
             'customer' => $this->customer,
-            'coworkers' => $this->coworkers,
+            'coworkers' => UserResource::collection($this->coworkers),
             'list' => $this->list,
-            'user_id' => $this->user_id
+            'user' => new UserResource($this->user)
         ];
     }
 }

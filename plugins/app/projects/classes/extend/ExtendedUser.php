@@ -8,7 +8,7 @@ class ExtendedUser
 {
     public static function extendUser(){
         RainLabUser::extend(function($model) {
-            $model->hasMany['projects'] = ['App\Projects\Models\Project'];
+            $model->belongsToMany['projects'] = ['App\Projects\Models\Project'];
         });
     }
 }

@@ -1,3 +1,4 @@
 1.0.1: 
     - First version of Projects
     - create_projects_table.php
+    - create_project_user_table.php

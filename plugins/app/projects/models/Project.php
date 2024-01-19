@@ -28,5 +28,9 @@ class Project extends Model
     public $hasMany = [
         'tasks' => [Task::class]
     ];
+
+    public $belongsToMany = [
+        'coworkers' => ['RainLab\User\Models\User', 'table' => 'app_project_user']
+    ];
     
 }

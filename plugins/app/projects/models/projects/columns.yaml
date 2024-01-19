@@ -37,7 +37,7 @@ columns:
         type: text
         searchable: true
 
-    user_id:
+    user[name]:
         label: User ID
-        type: number
+        type: text
         searchable: true

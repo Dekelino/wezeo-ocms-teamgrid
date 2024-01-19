@@ -31,19 +31,23 @@ fields:
         span: auto
         type: text
 
-    coworkers:
-        label: Coworkers
+    associatedUsers:
+       label: Associated Users
         span: auto
-        type: text
-        mode: json
-        comment: 'Enter a JSON array of coworkers'
+        type: recordfinder
+        prompt: 'Select coworkers'
+        modelClass: 'RainLab\User\Models\User'
 
     list:
         label: List
         span: auto
         type: text
 
-    user_id:
+    user:
         label: User ID
         span: auto
         type: number
+    
+    #recordfinder -  used to associate records from another model
+
+   # https://docs.octobercms.com/1.x/backend/forms.html#record-finder
