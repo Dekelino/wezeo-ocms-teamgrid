@@ -22,7 +22,8 @@ class Project extends Model
     ];
 
     public $belongsTo = [
-        'user' => [User::class],
+        'project_manager' => [User::class], // project manager, customer
+        'customer' => [User::class]
     ];
 
     public $hasMany = [
@@ -30,7 +31,13 @@ class Project extends Model
     ];
 
     public $belongsToMany = [
-        'coworkers' => ['RainLab\User\Models\User', 'table' => 'app_project_user']
+        'coworkers' => ['RainLab\User\Models\User', 'table' => 'app_project_user', 'key' => 'project_id', 'otherKey' => 'user_id'] // v tabulke vypisat iba count 
     ];
-    
+
+
+    // Event to update coworkers count before saving
+    public function beforeSave()
+    {
+        $this->attributes['coworkers'] = $this->coworkers->count();;
+    }
 }

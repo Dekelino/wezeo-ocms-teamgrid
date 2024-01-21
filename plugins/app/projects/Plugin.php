@@ -16,7 +16,7 @@ class Plugin extends PluginBase
             'author'      => 'App',
             'icon'        => 'icon-leaf',
             'permissions' => ['app.projects.*'],
-            'url'         => Backend::url('app/project/projects'),
+            'url'         => Backend::url('app/projects/projects'),
             'order'       => 500,
         ];
     }
@@ -24,14 +24,6 @@ class Plugin extends PluginBase
     public function boot()
     {
         ExtendedUser::extendUser();
-    }
-
-    public function registerComponents()
-    {
-
-        return [
-            'App\Projects\Components\MyComponent' => 'myComponent',
-        ];
     }
 
     public function registerPermissions()
@@ -49,7 +41,7 @@ class Plugin extends PluginBase
         return [
             'projects' => [
                 'label'       => 'Projects',
-                'url'         => Backend::url('app/project/projects'),
+                'url'         => Backend::url('app/projects/projects'),
                 'icon'        => 'icon-leaf',
                 'permissions' => ['app.projects.*'],
                 'order'       => 500,

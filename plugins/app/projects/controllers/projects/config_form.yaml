@@ -3,28 +3,28 @@
 # ===================================
 
 # Record name
-name: Projects-Controller
+name: Project
 
 # Model Form Field configuration
-form: $/app/projects/models/projects-controller/fields.yaml
+form: $/app/projects/models/project/fields.yaml
 
 # Model Class name
-modelClass: App\Projects\Models\ProjectsController
+modelClass: App\Projects\Models\Project
 
 # Default redirect location
-defaultRedirect: app/projects/projects-controller
+defaultRedirect: app/projects/projects
 
 # Create page
 create:
     title: backend::lang.form.create_title
-    redirect: app/projects/projects-controller/update/:id
-    redirectClose: app/projects/projects-controller
+    redirect: app/projects/projects/update/:id
+    redirectClose: app/projects/projects
 
 # Update page
 update:
     title: backend::lang.form.update_title
-    redirect: app/projects/projects-controller
-    redirectClose: app/projects/projects-controller
+    redirect: app/projects/projects
+    redirectClose: app/projects/projects
 
 # Preview page
 preview:

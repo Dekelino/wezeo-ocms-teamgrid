@@ -1,0 +1,67 @@
+# ===================================
+#  Form Field Definitions
+# ===================================
+
+fields:
+    id:
+        label: ID
+        span: auto
+        type: number
+        readOnly: true
+
+    title:
+        label: Title
+        span: auto
+        type: text
+        required: true
+
+    description:
+        label: Description
+        span: auto
+        type: textarea
+
+    is_done:
+        label: Is Done
+        span: auto
+        type: switch
+        default: false
+
+    
+
+    coworkers:
+        label: Coworkers
+        span: auto
+        type: checkboxlist
+        quickselect: true
+        options:
+                 1: Coworker1
+                 2: Coworker2
+                 3: Coworker3
+
+    list:
+        label: List
+        span: auto
+        type: text
+
+    project_manager:
+        label: Project manager
+        type: recordfinder
+        list: ~/plugins/rainlab/user/models/user/columns.yaml
+        prompt: Project manager
+        column: project_manager_id
+        conditions: "is_project_manager = 1"
+
+    customer:
+        label: Customer
+        type: recordfinder
+        list: ~/plugins/rainlab/user/models/user/columns.yaml
+        prompt: Customer
+        column: project_manager_id
+        conditions: "is_customer = 1"
+        
+    
+    #recordfinder -  used to associate records from another model
+
+   # https://docs.octobercms.com/1.x/backend/forms.html#record-finder - project manager/ customer , vytvoriť nový columns pre userov
+
+   # coworkers - checkbox list 

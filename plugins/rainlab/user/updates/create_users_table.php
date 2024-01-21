@@ -16,6 +16,8 @@ class CreateUsersTable extends Migration
             $table->string('email')->unique();
             $table->string('password');
             $table->string('activation_code')->nullable()->index();
+            $table->boolean('is_project_manager')->default(false);
+            $table->boolean('is_customer')->default(false);
             $table->string('persist_code')->nullable();
             $table->string('reset_password_code')->nullable()->index();
             $table->text('permissions')->nullable();

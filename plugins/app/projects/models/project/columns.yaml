@@ -24,8 +24,8 @@ columns:
 
     customer:
         label: Customer
-        type: text
-        searchable: true
+        relation: customer
+        select: name
 
     coworkers:
         label: Coworkers
@@ -37,7 +37,7 @@ columns:
         type: text
         searchable: true
 
-    user[name]:
-        label: User ID
+    project_manager[name]:
+        label: Project manager ID
         type: text
         searchable: true

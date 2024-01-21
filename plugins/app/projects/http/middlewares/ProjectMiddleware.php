@@ -17,7 +17,7 @@ class ProjectMiddleware
 
         $user = auth()->user();
 
-        if ($project->user_id !== $user->id) {
+        if ($project->project_manager_id !== $user->id) {
             abort(403, 'This is not your project, please contact admin user to add you as subscriber');
         }
 

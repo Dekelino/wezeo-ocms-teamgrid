@@ -52,6 +52,8 @@ class User extends UserBase
         'email',
         'password',
         'password_confirmation',
+        'is_project_manager',
+        'is_customer',
         'created_ip_address',
         'last_ip_address'
     ];
