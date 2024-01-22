@@ -3,28 +3,28 @@
 # ===================================
 
 # Record name
-name: Tasks-Controller
+name: Task
 
 # Model Form Field configuration
-form: $/app/tasks/models/tasks-controller/fields.yaml
+form: $/app/tasks/models/task/fields.yaml
 
 # Model Class name
-modelClass: App\Tasks\Models\TasksController
+modelClass: App\Tasks\Models\Task
 
 # Default redirect location
-defaultRedirect: app/tasks/tasks-controller
+defaultRedirect: app/tasks/tasks
 
 # Create page
 create:
     title: backend::lang.form.create_title
-    redirect: app/tasks/tasks-controller/update/:id
-    redirectClose: app/tasks/tasks-controller
+    redirect: app/tasks/tasks/update/:id
+    redirectClose: app/tasks/tasks
 
 # Update page
 update:
     title: backend::lang.form.update_title
-    redirect: app/tasks/tasks-controller
-    redirectClose: app/tasks/tasks-controller
+    redirect: app/tasks/tasks
+    redirectClose: app/tasks/tasks
 
 # Preview page
 preview:

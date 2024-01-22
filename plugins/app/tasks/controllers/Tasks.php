@@ -4,9 +4,9 @@ use BackendMenu;
 use Backend\Classes\Controller;
 
 /**
- * Tasks-Controller Back-end Controller
+ * Tasks Back-end Controller
  */
-class TasksController extends Controller
+class Tasks extends Controller
 {
     /**
      * @var array Behaviors that are implemented by this controller.
@@ -30,6 +30,6 @@ class TasksController extends Controller
     {
         parent::__construct();
 
-        BackendMenu::setContext('App.Tasks', 'tasks', 'tasks-controller');
+        BackendMenu::setContext('App.Tasks', 'tasks', 'tasks');
     }
 }

@@ -1,7 +1,7 @@
 <?php namespace App\Tasks;
 
 use App\Projects\Classes\Extend\ExtendedUser;
-use Backend;
+use Backend\Facades\Backend;
 use System\Classes\PluginBase;
 
 /**
@@ -9,28 +9,43 @@ use System\Classes\PluginBase;
  */
 class Plugin extends PluginBase
 {
-    /**
-     * Returns information about this plugin.
-     *
-     * @return array
-     */
     public function pluginDetails()
     {
         return [
-            'name'        => 'tasks',
+            'name'        => 'Tasks',
             'description' => 'No description provided yet...',
             'author'      => 'App',
-            'icon'        => 'icon-leaf'
+            'icon'        => 'icon-dot-circle-o',
+            'permissions' => ['app.tasks.*'],
+            'url'         => Backend::url('app/tasks/tasks'),
+            'order'       => 500,
         ];
     }
-
-    /**
-     * Boot method, called right before the request route.
-     *
-     * @return array
-     */
     public function boot()
     {
        ExtendedUser::extendUser();
+    }
+
+    public function registerPermissions()
+    {
+        return [
+            'app.tasks.some_permission' => [
+                'tab'   => 'tasks',
+                'label' => 'Some permission'
+            ],
+        ];
+    }
+
+    public function registerNavigation()
+    {
+        return [
+            'tasks' => [
+                'label'       => 'Tasks',
+                'url'         => Backend::url('app/tasks/tasks'),
+                'icon'        => 'icon-dot-circle-o',
+                'permissions' => ['app.tasks.*'],
+                'order'       => 500,
+            ],
+        ];
     }
 }

@@ -26,14 +26,6 @@ columns:
         label: rainlab.user::lang.user.email
         searchable: true
 
-    is_project_manager:
-        label: Is Project Manager
-        type: switch
-    
-    is_customer:
-        label: Is Customer
-        type: switch
-
     created_at:
         label: rainlab.user::lang.user.created_at
         type: timetense

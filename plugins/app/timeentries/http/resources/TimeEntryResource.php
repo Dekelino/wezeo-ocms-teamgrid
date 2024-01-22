@@ -9,8 +9,10 @@ class TimeEntryResource extends JsonResource
     public function toArray($request)
     {
         return [
-            'start_time' => $this->start_time,
-            'end_time' => $this->end_time
+            'task_id' => $this->task_id,
+            'worker_id' => $this->worker_id,
+            'start' => $this->start,
+            'end' => $this->end
         ];
     }
 }

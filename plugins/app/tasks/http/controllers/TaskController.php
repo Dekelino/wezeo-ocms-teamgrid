@@ -24,12 +24,11 @@ class TaskController extends Controller
         $user = auth()->user();
         $task = new Task();
         $task->id= $request->id;
-        $task->task_name = $request->task_name;
+        $task->name = $request->name;
         $task->description = $request->description;
         $task->project_id = $key;
-        $task->subscribers_user_id = $request->subscribers_user_id;
         $task->is_completed = $request->is_completed;
-        $task->user_id = $user->id;
+        $task->project_manager_id = $user->id;
         $task->planned_start = $request->planned_start;
         $task->planned_end = $request->planned_end;
         $task->planned_time = $request->planned_time;
@@ -39,11 +38,11 @@ class TaskController extends Controller
 
     public function update(Request $request, $key)
     {
+        $user = auth()->user();
         $task = Task::findOrFail($key); //findOrFail https://docs.octobercms.com/3.x/extend/database/model.html#not-found-exceptions
 
-        $task->task_name = $request->input('task_name');
+        $task->name = $request->input('name');
         $task->description = $request->input('description');
-        $task->subscribers_user_id = $request->input('subscribers_user_id');
         $task->is_completed = $request->input('is_completed');
         $task->planned_start = $request->input('planned_start');
         $task->planned_end = $request->input('planned_end');
@@ -54,7 +53,8 @@ class TaskController extends Controller
     }
 
     public function complete($key)
-    {
+    {   
+        $user = auth()->user();
         $task = Task::findOrFail($key);
 
         $task->is_completed = $task->is_completed ? false : true;

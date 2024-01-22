@@ -12,12 +12,13 @@ use Carbon\Carbon;
 
 class TimeEntryController extends Controller 
 {
-    public function store() 
+    public function store(Request $request) 
     {
         $user = auth()->user();
         $timeentry = new TimeEntry();
-        $timeentry->user_id = $user->id;
-        $timeentry->start_time = Carbon::now('Europe/Bratislava');
+        $timeentry->task_id = $request->task_id;
+        $timeentry->worker_id = $user->id;
+        $timeentry->start = Carbon::now('Europe/Bratislava');
         $timeentry->save();
         return TimeEntryResource::make($timeentry);
     }
@@ -26,7 +27,7 @@ class TimeEntryController extends Controller
     {
         $timeentry = TimeEntry::findOrFail($key);
 
-        $timeentry->end_time = Carbon::now('Europe/Bratislava');
+        $timeentry->end = Carbon::now('Europe/Bratislava');
 
         $timeentry->save();
         return TimeEntryResource::make($timeentry);
@@ -36,8 +37,8 @@ class TimeEntryController extends Controller
     {
         $timeentry = TimeEntry::findOrFail($key);
 
-        $timeentry->start_time = $request->input('start_time');
-        $timeentry->end_time = $request->input('end_time');
+        $timeentry->start = $request->input('start');
+        $timeentry->end= $request->input('end');
 
         $timeentry->save();
 

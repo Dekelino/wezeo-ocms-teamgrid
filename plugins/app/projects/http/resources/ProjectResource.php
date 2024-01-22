@@ -10,13 +10,12 @@ class ProjectResource extends JsonResource {
     {
         return [
             'id' => $this->id,
-            'title' => $this->title,
+            'name' => $this->name,
             'description' => $this->description,
             'is_done' => $this->is_done,
+            'project_manager' => new UserResource($this->project_manager),
             'customer' => new UserResource($this->customer),
-            'coworkers' => UserResource::collection($this->coworkers),
             'list' => $this->list,
-            'project_manager' => new UserResource($this->project_manager)
         ];
     }
 }

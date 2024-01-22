@@ -9,18 +9,30 @@ fields:
         type: number
         readOnly: true
 
-    user_id:
-        label: User ID
-        span: auto
-        type: number
+    task:
+        label: Task
+        type: recordfinder
+        list: ~/plugins/app/tasks/models/task/columns.yaml
+        prompt: Choose task
         required: true
 
-    start_time:
-        label: Start Time
-        span: auto
-        type: datetime
+    worker:
+        label: Worker
+        type: recordfinder
+        list: ~/plugins/rainlab/user/models/user/columns.yaml
+        prompt: Worker
+        required: true
 
-    end_time:
+    start:
+        label: Start Time
+        type: datepicker
+        mode: datetime
+        useTimezone: true
+        required: true
+
+    end:
         label: End Time
-        span: auto
-        type: datetime
+        type: datepicker
+        mode: datetime
+        useTimezone: true
+        required: true

@@ -17,7 +17,7 @@ class TimeEntryMiddleware
 
         $user = auth()->user();
 
-        if ($timeEntryId->user_id !== $user->id) {
+        if ($timeEntryId->worker_id !== $user->id) {
             abort(403, 'This is not your time entry, please contact admin user to add you as subscriber .');
         }
 

@@ -8,7 +8,7 @@ columns:
         type: number
         searchable: true
 
-    task_name:
+    name:
         label: Task Name
         type: text
         searchable: true
@@ -18,23 +18,18 @@ columns:
         type: text
         searchable: true
 
-    project_id:
-        label: Project ID
-        type: number
-        searchable: true
-
-    subscribers_user_id:
-        label: Subscribers User ID
-        type: number
+    project[title]:
+        label: Project
+        type: text
         searchable: true
 
     is_completed:
         label: Is Completed
         type: switch
 
-    user_id:
-        label: User ID
-        type: number
+    project_manager[name]:
+        label: Project manager name
+        type: text
         searchable: true
 
     planned_start:
@@ -48,6 +43,6 @@ columns:
         searchable: true
 
     planned_time:
-        label: Planned Time
-        type: number
+        label: Planned Time (hours)
+        type: text
         searchable: true

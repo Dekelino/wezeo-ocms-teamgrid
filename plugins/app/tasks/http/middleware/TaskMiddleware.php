@@ -18,7 +18,7 @@ class TaskMiddleware
 
         $user = auth()->user();
 
-        if ($task->user_id !== $user->id) {
+        if ($task->project_manager_id !== $user->id) {
             abort(403, 'This is not your task, please contact admin user to add you as subscriber');
         }
 

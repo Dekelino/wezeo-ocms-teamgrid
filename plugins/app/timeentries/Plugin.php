@@ -2,27 +2,44 @@
 
 namespace App\TimeEntries;
 
-use Backend;
+use Backend\Facades\Backend;
 use System\Classes\PluginBase;
 
 
-/**
- * timeEntries Plugin Information File
- */
 class Plugin extends PluginBase
 {
-    /**
-     * Returns information about this plugin.
-     *
-     * @return array
-     */
     public function pluginDetails()
     {
         return [
-            'name'        => 'timeEntries',
+            'name'        => 'TimeEntries',
             'description' => 'No description provided yet...',
             'author'      => 'App',
-            'icon'        => 'icon-leaf'
+            'icon'        => 'icon-bomb',
+            'url'         => Backend::url('app/timeentries/timeentries'),
+            'order'       => 500,
+        ];
+    }
+
+    public function registerPermissions()
+    {
+        return [
+            'app.timeentries.some_permission' => [
+                'tab'   => 'timeentries',
+                'label' => 'Some permission'
+            ],
+        ];
+    }
+
+    public function registerNavigation()
+    {
+        return [
+            'timeentries' => [
+                'label'       => 'Time-entries',
+                'url'         => Backend::url('app/timeentries/timeentries'),
+                'icon'        => 'icon-bomb',
+                'permissions' => ['app.projects.*'],
+                'order'       => 500,
+            ],
         ];
     }
 }

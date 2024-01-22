@@ -12,16 +12,6 @@ fields:
         label: rainlab.user::lang.user.surname
         span: auto
 
-    is_project_manager:
-        label: Is Project Manager
-        type: switch
-        default: false
-
-    is_customer:
-        label: Is Customer
-        type: switch
-        default: false
-
 
 tabs:
     fields:

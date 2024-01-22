@@ -9,27 +9,18 @@ fields:
         type: number
         readOnly: true
 
-    task_name:
+    name:
         label: Task Name
         span: auto
         type: text
         required: true
 
+        
+
     description:
         label: Description
         span: auto
         type: textarea
-
-    project_id:
-        label: Project ID
-        span: auto
-        type: number
-        required: true
-
-    subscribers_user_id:
-        label: Subscribers User ID
-        span: auto
-        type: number
 
     is_completed:
         label: Is Completed
@@ -37,23 +28,33 @@ fields:
         type: switch
         default: false
 
-    user_id:
-        label: User ID
-        span: auto
-        type: number
+    project:
+        label: Project
+        type: recordfinder
+        list: ~/plugins/app/projects/models/project/columns.yaml
+        prompt: Choose project
+        required: true
+
+    project_manager:
+        label: Project manager
+        type: recordfinder
+        list: ~/plugins/rainlab/user/models/user/columns.yaml
+        prompt: Project manager
         required: true
 
     planned_start:
         label: Planned Start
-        span: auto
-        type: datetime
-
+        type: datepicker
+        mode: datetime
+        useTimezone: true
+    
     planned_end:
         label: Planned End
-        span: auto
-        type: datetime
-
+        type: datepicker
+        mode: datetime
+        useTimezone: true
+    
     planned_time:
-        label: Planned Time
-        span: auto
+        label: Planned Time (hours)
         type: number
+        mode: time

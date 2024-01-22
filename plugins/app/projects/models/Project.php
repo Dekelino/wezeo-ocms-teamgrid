@@ -13,7 +13,7 @@ class Project extends Model
     public $table = 'app_projects';
 
     protected $guarded = ['*'];
-    protected $fillable = [];
+    protected $fillable = ['name', 'description', 'is_done', 'project_manager_id', 'customer_id', 'coworkers', 'list'];
 
     public $rules = [];
     protected $dates = [
@@ -34,10 +34,16 @@ class Project extends Model
         'coworkers' => ['RainLab\User\Models\User', 'table' => 'app_project_user', 'key' => 'project_id', 'otherKey' => 'user_id'] // v tabulke vypisat iba count 
     ];
 
-
-    // Event to update coworkers count before saving
-    public function beforeSave()
+    public function getCoworkersOptions() //dynamic options
     {
-        $this->attributes['coworkers'] = $this->coworkers->count();;
+        // getting all users
+        $coworkers = \RainLab\User\Models\User::all();
+        // returing array filled with id & names of users
+        return $coworkers->pluck('name', 'id')->all();  //https://docs.octobercms.com/2.x/services/collections.html#pluck - pluck
+    }
+
+    public function getCoworkersCountAttribute()
+    {
+        return $this->coworkers()->count();
     }
 }

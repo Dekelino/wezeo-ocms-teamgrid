@@ -23,11 +23,11 @@ class ProjectController extends Controller
         $user = auth()->user();
         $project = new Project();
         $project->id = $request->id;
-        $project->title = $request->title;
+        $project->name = $request->name;
         $project->description = $request->description;
+        $project->project_manager = $user->id;
         $project->customer = $request->customer;
         $project->list = $request->list;
-        $project->user_id = $user->id;
         $project->save();
         return new ProjectResource($project);
     }
@@ -37,7 +37,7 @@ class ProjectController extends Controller
         $project = Project::findOrFail($key); //findOrFail https://docs.octobercms.com/3.x/extend/database/model.html#not-found-exceptions
 
 
-        $project->title = $request->input('title');
+        $project->name = $request->input('name');
         $project->description = $request->input('description');
         $project->customer = $request->input('customer');
         $project->list = $request->input('list');

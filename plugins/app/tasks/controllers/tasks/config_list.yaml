@@ -3,16 +3,16 @@
 # ===================================
 
 # Model List Column configuration
-list: $/app/tasks/models/tasks-controller/columns.yaml
+list: $/app/tasks/models/task/columns.yaml
 
 # Model Class name
-modelClass: App\Tasks\Models\TasksController
+modelClass: App\Tasks\Models\Task
 
 # List Title
-title: Manage Tasks-Controllers
+title: Manage Tasks
 
 # Link URL for each record
-recordUrl: app/tasks/tasks-controller/update/:id
+recordUrl: app/tasks/tasks/update/:id
 
 # Message to display if the list is empty
 noRecordsMessage: backend::lang.list.no_records

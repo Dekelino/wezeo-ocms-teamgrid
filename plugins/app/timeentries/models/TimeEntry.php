@@ -5,6 +5,7 @@ namespace App\Timeentries\Models;
 use Model;
 use RainLab\User\Models\User;
 use App\Tasks\Models\Task;
+use Illuminate\Support\Carbon;
 
 /**
  * timeEntry Model
@@ -25,6 +26,20 @@ class TimeEntry extends Model
     ];
 
     public $belongsTo = [
-        'task' => [Task::class, 'user' => User::class]
+        'worker' => [User::class],
+        'task' => [Task::class]
     ];
+
+    public function getDurationAttribute()
+    {
+        if ($this->start && $this->end && $this->end>$this->start)  {
+            $totalMinutes = Carbon::parse($this->start)->diffInMinutes($this->end);
+            $hours = floor($totalMinutes / 60);
+            $minutes = $totalMinutes % 60;
+
+            return sprintf('%02d:%02d', $hours, $minutes);
+        }
+
+        return 'End time have to be higher then start time !';
+    }
 }

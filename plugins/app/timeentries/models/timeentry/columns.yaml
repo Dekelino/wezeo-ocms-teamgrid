@@ -8,17 +8,26 @@ columns:
         type: number
         searchable: true
 
-    user_id:
-        label: User ID
+    task[name]:
+        label: Task
         type: number
         searchable: true
 
-    start_time:
+    worker[name]:
+        label: Task worker
+        type: text
+        searchable: true
+
+
+    start:
         label: Start Time
         type: datetime
         searchable: true
 
-    end_time:
+    end:
         label: End Time
         type: datetime
         searchable: true
+
+    duration:
+        label: Duration
