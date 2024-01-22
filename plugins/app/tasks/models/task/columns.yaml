@@ -18,7 +18,7 @@ columns:
         type: text
         searchable: true
 
-    project[title]:
+    project[name]:
         label: Project
         type: text
         searchable: true
@@ -27,10 +27,13 @@ columns:
         label: Is Completed
         type: switch
 
-    project_manager[name]:
-        label: Project manager name
+    user[name]:
+        label: Task created by 
         type: text
         searchable: true
+
+    total_tracked_time:
+        label: Total tracked time
 
     planned_start:
         label: Planned Start
@@ -46,3 +49,4 @@ columns:
         label: Planned Time (hours)
         type: text
         searchable: true
+        

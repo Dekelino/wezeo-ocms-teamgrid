@@ -16,11 +16,11 @@ fields:
         prompt: Choose task
         required: true
 
-    worker:
-        label: Worker
+    user:
+        label: User
         type: recordfinder
         list: ~/plugins/rainlab/user/models/user/columns.yaml
-        prompt: Worker
+        prompt: User
         required: true
 
     start:

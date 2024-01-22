@@ -35,8 +35,6 @@ class ProjectController extends Controller
     public function update(Request $request, $key)
     {
         $project = Project::findOrFail($key); //findOrFail https://docs.octobercms.com/3.x/extend/database/model.html#not-found-exceptions
-
-
         $project->name = $request->input('name');
         $project->description = $request->input('description');
         $project->customer = $request->input('customer');
@@ -48,9 +46,7 @@ class ProjectController extends Controller
     public function complete($key)
     {
         $project = Project::findOrFail($key);
-
         $project->is_done = $project->is_done ? false : true;
-
         $project->save();
         return new ProjectResource($project);
     }

@@ -14,7 +14,7 @@ class CreateTasksTable extends Migration
             $table->text('description')->nullable();
             $table->unsignedBigInteger('project_id');
             $table->boolean('is_completed')->default(false);
-            $table->integer('project_manager_id');
+            $table->integer('user_id');
             $table->timestamp('planned_start')->nullable();
             $table->timestamp('planned_end')->nullable();
             $table->integer('planned_time')->nullable();

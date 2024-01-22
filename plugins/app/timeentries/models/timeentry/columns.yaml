@@ -13,8 +13,8 @@ columns:
         type: number
         searchable: true
 
-    worker[name]:
-        label: Task worker
+    user[name]:
+        label: Task user
         type: text
         searchable: true
 

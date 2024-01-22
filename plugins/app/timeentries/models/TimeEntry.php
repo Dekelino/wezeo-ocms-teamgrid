@@ -26,7 +26,7 @@ class TimeEntry extends Model
     ];
 
     public $belongsTo = [
-        'worker' => [User::class],
+        'user' => [User::class],
         'task' => [Task::class]
     ];
 

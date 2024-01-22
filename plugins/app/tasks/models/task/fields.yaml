@@ -35,11 +35,11 @@ fields:
         prompt: Choose project
         required: true
 
-    project_manager:
-        label: Project manager
+    user:
+        label: User
         type: recordfinder
         list: ~/plugins/rainlab/user/models/user/columns.yaml
-        prompt: Project manager
+        prompt: User
         required: true
 
     planned_start:

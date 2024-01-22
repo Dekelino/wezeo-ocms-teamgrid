@@ -6,6 +6,7 @@ use Model;
 use App\Projects\Models\Project;
 use App\TimeEntries\Models\TimeEntry;
 use RainLab\User\Models\User;
+use Illuminate\Support\Carbon;
 
 class Task extends Model
 {
@@ -15,7 +16,7 @@ class Task extends Model
 
     protected $guarded = ['*'];
 
-    protected $fillable = ['name', 'description', 'project_id', 'is_completed', 'project_manager_id', 'planned_start', 'planned_end', 'planned_time',];
+    protected $fillable = ['name', 'description', 'project_id', 'is_completed', 'user_id', 'planned_start', 'planned_end', 'planned_time',];
 
     public $rules = [];
 
@@ -27,11 +28,28 @@ class Task extends Model
     ];
 
     public $belongsTo = [
-        'project_manager' => [User::class],
+        'user' => [User::class],
         'project' => [Project::class]
     ];
 
     public $hasMany = [
         'timeEntries' => Timeentry::class
     ];
+
+    public function getTotalTrackedTimeAttribute()
+    {
+
+        $timeEntries = TimeEntry::where('task_id', $this->id)->get();
+
+        $totalDuration = 0;
+
+        foreach($timeEntries as $timeEntry){
+            $totalDuration += Carbon::parse($timeEntry->start)->diffInMinutes(Carbon::parse($timeEntry->end)); //+= count, "+" overwrite
+        }
+
+        $hours = floor($totalDuration / 60);
+        $minutes = $totalDuration % 60;
+
+        return sprintf('%02d:%02d', $hours, $minutes);
+    }
 }

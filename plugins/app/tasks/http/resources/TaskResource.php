@@ -14,7 +14,7 @@ class TaskResource extends JsonResource {
             'description' => $this->description,
             'project_id' => $this->project_id,
             'is_completed' => $this->is_completed,
-            'project_manager_id' => $this->project_manager_id,
+            'user_id' => $this->project_manager_id,
             'planned_start' => $this->planned_start,
             'planned_end' => $this->planned_end,
             'planned_time' => $this->planned_time,
